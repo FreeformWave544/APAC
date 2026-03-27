@@ -1,9 +1,9 @@
 extends CharacterBody2D
-
+class_name Player
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+const JUMP_VELOCITY = -600.0
+var score := 0
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -16,3 +16,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
+
+func _update_UI() -> void:
+	$"../UI/VBoxContainer/Score".text = "Score: " + str(score)
+	if score >= len($"../CollectableContainer".get_children()):
+		$UI/Win.show()

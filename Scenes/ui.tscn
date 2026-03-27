@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://we65g4i1sp7l"]
+
+[ext_resource type="Script" uid="uid://dj4brevw4hd77" path="res://Scenes/ui.gd" id="1_jxero"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdvrb"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.28485027, 0.2848503, 0.28485018, 1)
+skew = Vector2(0.1, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.49019608)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_bottom_right = 50
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxero"]
+bg_color = Color(0.58431375, 0.58431375, 0.6509804, 1)
+skew = Vector2(0.05, 0)
+border_width_left = 50
+border_width_right = 50
+border_color = Color(0.58431375, 0.58431375, 0.5372549, 0)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 20
+shadow_color = Color(0, 0, 0, 0.16078432)
+shadow_size = 5
+
+[sub_resource type="Theme" id="Theme_jxero"]
+Button/styles/normal = SubResource("StyleBoxFlat_qdvrb")
+Panel/styles/panel = SubResource("StyleBoxFlat_jxero")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jxero"]
+font_size = 32
+font_color = Color(0.30588236, 1, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+shadow_offset = Vector2(0, 4)
+
+[node name="UI" type="CanvasLayer" unique_id=1648613119]
+script = ExtResource("1_jxero")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=965833655]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = -10.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Score" type="Label" parent="VBoxContainer" unique_id=683849634]
+layout_mode = 2
+text = "Score: 0"
+
+[node name="GameOver" type="Panel" parent="." unique_id=102924160]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_jxero")
+
+[node name="ButtonContainer" type="CenterContainer" parent="GameOver" unique_id=358245980]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/ButtonContainer" unique_id=182387215]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Retry" type="Button" parent="GameOver/ButtonContainer/VBoxContainer" unique_id=1713282296]
+layout_mode = 2
+text = "Retry"
+
+[node name="MainMenu" type="Button" parent="GameOver/ButtonContainer/VBoxContainer" unique_id=1588768848]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Win" type="Panel" parent="." unique_id=876345124]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_jxero")
+
+[node name="ButtonContainer" type="CenterContainer" parent="Win" unique_id=1644554048]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Win/ButtonContainer" unique_id=1719380889]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="Win/ButtonContainer/VBoxContainer" unique_id=8916583]
+layout_mode = 2
+text = "YOU WON!"
+label_settings = SubResource("LabelSettings_jxero")
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="Win/ButtonContainer/VBoxContainer" unique_id=901261578]
+layout_mode = 2
+text = "Continue"
+
+[node name="MainMenu" type="Button" parent="Win/ButtonContainer/VBoxContainer" unique_id=1264733929]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="visibility_changed" from="GameOver" to="." method="_on_game_over_visibility_changed"]
+[connection signal="pressed" from="GameOver/ButtonContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="GameOver/ButtonContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="visibility_changed" from="Win" to="." method="_on_game_over_visibility_changed"]
+[connection signal="pressed" from="Win/ButtonContainer/VBoxContainer/Continue" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Win/ButtonContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

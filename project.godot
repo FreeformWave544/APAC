@@ -15,6 +15,10 @@ run/main_scene="uid://c43tkd0w8vief"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
@@ -44,7 +48,9 @@ right={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+2d/default_gravity=880.0
 
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+anti_aliasing/quality/msaa_2d=3
