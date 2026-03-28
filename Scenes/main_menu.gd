@@ -9,3 +9,7 @@ func _physics_process(_delta: float) -> void:
 		back = true
 		$Saph.scale = lerp($Saph.scale, Vector2(1.0, 1.0), 0.01)
 		if $Saph.scale > Vector2(0.8, 0.8): back = false
+
+
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")

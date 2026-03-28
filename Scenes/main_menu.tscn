@@ -116,3 +116,5 @@ alignment = 1
 [node name="Start" type="Button" parent="Panel/CenterContainer/VBoxContainer" unique_id=894091279]
 layout_mode = 2
 text = "START"
+
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
