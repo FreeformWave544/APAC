@@ -5,7 +5,14 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 var score := 0
 
+var back := false
 func _physics_process(delta: float) -> void:
+	if $Sprite2D.texture.fill_to.x > 1.3 and not back:
+		$Sprite2D.texture.fill_to.x = lerp($Sprite2D.texture.fill_to.x, 1.2, 0.01)
+	else:
+		back = true
+		$Sprite2D.texture.fill_to.x = lerp($Sprite2D.texture.fill_to.x, 2.0, 0.01)
+		if $Sprite2D.texture.fill_to.x > 1.9: back = false
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("jump") and is_on_floor():

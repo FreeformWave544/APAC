@@ -16,4 +16,4 @@ func _on_retry_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

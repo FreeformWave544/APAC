@@ -5,8 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7u77a"]
 
 [sub_resource type="Gradient" id="Gradient_7u77a"]
-offsets = PackedFloat32Array(0, 0.06626506, 0.37349397, 0.52409637, 0.6686747, 0.7108434)
-colors = PackedColorArray(0, 0, 1.6823783, 1, 1.7544361, 2.341507, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0.5372549, 0.10980392, 1, 1, 0.5372549, 0)
+offsets = PackedFloat32Array(0, 0.37349397, 0.52409637, 0.6686747, 0.7108434)
+colors = PackedColorArray(1.7544361, 2.341507, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0.5372549, 0.10980392, 1, 1, 0.5372549, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jjgbg"]
 gradient = SubResource("Gradient_7u77a")
