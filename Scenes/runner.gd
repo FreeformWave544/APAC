@@ -1,11 +1,22 @@
 extends Area2D
 
+@export var StartPos := global_position
+@export var EndPos := Vector2(0, 0)
+@export var speed := 100.0
+
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.score += 1
 		body._update_UI()
 		set_deferred("monitoring", false)
 		finalCountdown()
+
+var forwards := true
+func _physics_process(delta: float) -> void:
+	var target = EndPos if forwards else StartPos
+	global_position = global_position.move_toward(target, speed * delta)
+	if global_position.distance_to(target) < 1.0:
+		forwards = !forwards
 
 func finalCountdown():
 	$Particles.process_material.initial_velocity_max = 1000.0

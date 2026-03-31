@@ -2,7 +2,7 @@ extends Control
 
 var back = false
 func _physics_process(_delta: float) -> void:
-	$Parallax2D.autoscroll = -(get_local_mouse_position() - Vector2(1152/2, 648/2))
+	$Parallax2D.autoscroll = -(get_local_mouse_position() - Vector2(1152.0/2, 648.0/2))
 	if $Saph.scale > Vector2(0.1, 0.1) and not back:
 		$Saph.scale = lerp($Saph.scale, Vector2(0.0, 0.0), 0.01)
 	else:

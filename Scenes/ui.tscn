@@ -17,24 +17,11 @@ corner_radius_top_left = 50
 corner_radius_bottom_right = 50
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxero"]
-bg_color = Color(0.58431375, 0.58431375, 0.6509804, 1)
-skew = Vector2(0.05, 0)
-border_width_left = 50
-border_width_right = 50
-border_color = Color(0.58431375, 0.58431375, 0.5372549, 0)
-border_blend = true
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-corner_detail = 20
-shadow_color = Color(0, 0, 0, 0.16078432)
-shadow_size = 5
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxero"]
 
 [sub_resource type="Theme" id="Theme_jxero"]
 Button/styles/normal = SubResource("StyleBoxFlat_qdvrb")
-Panel/styles/panel = SubResource("StyleBoxFlat_jxero")
+Panel/styles/panel = SubResource("StyleBoxEmpty_jxero")
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxero"]
 font_size = 32
@@ -44,6 +31,15 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
 shadow_offset = Vector2(0, 4)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jxero"]
+noise_type = 2
+fractal_type = 0
+cellular_distance_function = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qdvrb"]
+noise = SubResource("FastNoiseLite_jxero")
+seamless = true
 
 [node name="UI" type="CanvasLayer" unique_id=1648613119]
 script = ExtResource("1_jxero")
@@ -80,6 +76,7 @@ grow_vertical = 2
 theme = SubResource("Theme_jxero")
 
 [node name="ButtonContainer" type="CenterContainer" parent="GameOver" unique_id=358245980]
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,6 +114,7 @@ grow_vertical = 2
 theme = SubResource("Theme_jxero")
 
 [node name="ButtonContainer" type="CenterContainer" parent="Win" unique_id=1644554048]
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,9 +141,15 @@ text = "Continue"
 layout_mode = 2
 text = "Main Menu"
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2106226492]
+z_index = 1
+position = Vector2(576, 324)
+skew = 0.05235982
+texture = SubResource("NoiseTexture2D_qdvrb")
+
 [connection signal="visibility_changed" from="GameOver" to="." method="_on_game_over_visibility_changed"]
 [connection signal="pressed" from="GameOver/ButtonContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="GameOver/ButtonContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="visibility_changed" from="Win" to="." method="_on_game_over_visibility_changed"]
-[connection signal="pressed" from="Win/ButtonContainer/VBoxContainer/Continue" to="." method="_on_retry_pressed"]
+[connection signal="visibility_changed" from="Win" to="." method="_on_win_visibility_changed"]
+[connection signal="pressed" from="Win/ButtonContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Win/ButtonContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

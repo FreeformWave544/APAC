@@ -4,6 +4,7 @@ class_name Player
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 var score := 0
+@onready var targetScore = len($"../CollectableContainer".get_children())
 
 var back := false
 func _physics_process(delta: float) -> void:
@@ -26,5 +27,5 @@ func _physics_process(delta: float) -> void:
 
 func _update_UI() -> void:
 	$"../UI/VBoxContainer/Score".text = "Score: " + str(score)
-	if score > len($"../CollectableContainer".get_children()):
+	if score >= targetScore:
 		$"../UI/Win".show()
