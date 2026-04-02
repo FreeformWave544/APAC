@@ -62,5 +62,6 @@ process_material = ExtResource("2_licok")
 stream = ExtResource("3_me652")
 pitch_scale = 0.3
 max_polyphony = 3
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
