@@ -1,9 +1,12 @@
 extends CanvasLayer
 
-@export var nextLevel: PackedScene = preload("res://Scenes/main_menu.tscn")
+@export var nextLevel: PackedScene
+
+func _ready() -> void:
+	if not nextLevel: nextLevel = load("res://Scenes/Levels/level" + str(int(str(get_parent().get_scene_file_path()).split(".")[0].split("level")[1]) + 1) + ".tscn")
 
 var forwards := true
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if $Sprite2D.visible:
 		var target = 45.0 if forwards else -10.0
 		$Sprite2D.texture.noise.cellular_jitter = lerp($Sprite2D.texture.noise.cellular_jitter, target, 0.01)
@@ -32,4 +35,4 @@ func _on_main_menu_pressed() -> void:
 
 func _on_continue_pressed() -> void:
 	get_tree().paused = false
-	get_tree().call_deferred("change_scene_to_file", nextLevel.resource_path)
+	get_tree().call_deferred("change_scene_to_file", nextLevel.resource_path) if nextLevel else get_tree().call_deferred("change_scene_to_file", "res://Scenes/main_menu.tscn")

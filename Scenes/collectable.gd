@@ -8,6 +8,7 @@ func _on_body_entered(body: Node2D) -> void:
 		finalCountdown()
 
 func finalCountdown():
+	modulate.b = 0.5
 	$Pickup.play()
 	$Particles.process_material.initial_velocity_max = 1000.0
 	await get_tree().create_timer(5.0).timeout

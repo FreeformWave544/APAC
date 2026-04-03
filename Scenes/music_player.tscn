@@ -6,6 +6,7 @@
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="." unique_id=647287443]
 stream = ExtResource("1_ous86")
+volume_db = -30.0
 pitch_scale = 0.2
 autoplay = true
 mix_target = 1

@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 		forwards = !forwards
 
 func finalCountdown():
+	modulate.b = 0.2
 	$Pickup.play()
 	$Particles.process_material.initial_velocity_max = 1000.0
 	await get_tree().create_timer(5.0).timeout
